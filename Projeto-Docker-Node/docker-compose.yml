@@ -1,0 +1,25 @@
+version: '3'
+services:
+  node-docker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: "node-docker"
+    volumes:
+      - ./:/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+
+  mongo-docker:
+    image: mongo:latest
+    container_name: "mongo-docker"
+    volumes:
+      - ./data:/data/db
+      - ./:/app
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_HOST=mongo
+

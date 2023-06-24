@@ -1,0 +1,16 @@
+{
+  "name": "projeto-docker-node",
+  "version": "1.0.0",
+  "description": "Versão do projeto, onde o Node.js e o MongoDB são executados em contêineres separados.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.3.1"
+  }
+}
