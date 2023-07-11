@@ -60,6 +60,7 @@ EXPOSE 3000
 
 # Comando para iniciar a aplicação
 CMD [ "npm", "start" ]
+
 ```
 
 - Crie um arquivo chamado `docker-compose.yml` na raiz do projeto e adicione o seguinte conteúdo:
@@ -67,23 +68,30 @@ CMD [ "npm", "start" ]
 ```yaml
 version: '3'
 services:
-  node:
+  node-docker:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: "node-docker"
+    command: npm start
     volumes:
-      - ./app:/app
+      - .:/app
     ports:
       - 3000:3000
     depends_on:
-      - mongo
+      - mongo-docker
 
-  mongo:
+  mongo-docker:
     image: mongo:latest
+    container_name: "mongo-docker"
     volumes:
       - ./data:/data/db
+      - ./:/app
     ports:
       - 27017:27017
+    environment:
+      - MONGO_HOST=mongo
+
 ```
 
 Passo 2: Estrutura do projeto

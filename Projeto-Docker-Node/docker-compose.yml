@@ -5,12 +5,13 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: "node-docker"
+    command: npm start
     volumes:
-      - ./:/app
+      - .:/app
     ports:
       - 3000:3000
     depends_on:
-      - mongo
+      - mongo-docker
 
   mongo-docker:
     image: mongo:latest

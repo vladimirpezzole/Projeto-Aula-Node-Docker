@@ -26,6 +26,13 @@ Para instalar o MongoDB no Linux, você pode seguir as etapas abaixo, dependendo
    ```
    sudo systemctl status mongod
    ```
+7. Outros comandos uteis
+   ```
+   sudo systemctl status mongod
 
+   sudo systemctl start mongod
+
+   sudo systemctl stop mongod
+   ```
 
 Essas instruções são uma orientação geral e podem variar dependendo da versão específica do Linux que você está usando. Consulte a documentação oficial do MongoDB para obter mais informações e instruções detalhadas de instalação para sua distribuição Linux específica.
