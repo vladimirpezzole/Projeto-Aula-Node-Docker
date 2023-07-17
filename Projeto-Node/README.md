@@ -1,4 +1,4 @@
- Esta é uma ideia simples de projeto em Node.js usando MongoDB para uma demonstração didática de uso. Vamos criar uma API básica para gerenciar uma lista de tarefas (to-do list).
+  Esta é uma ideia simples de projeto em Node.js usando MongoDB para uma demonstração didática de uso. Vamos criar uma API básica para gerenciar uma lista de tarefas (to-do list).
 
 A base da estrutura do projeto a API estará dentro da pasta 'app' na raiz do projeto. 
 
