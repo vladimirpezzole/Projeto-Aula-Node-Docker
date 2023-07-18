@@ -3,15 +3,20 @@ const mongoose = require('mongoose');
 
 const app = express();
 const PORT = 3000;
+const mongoHost = process.env.MONGO_HOST || '172.17.0.2'; //ip do container ou localhost
+const mongoPort = process.env.MONGO_PORT || '27017';
 
 // Conectar ao MongoDB
-mongoose.connect('mongodb://localhost/todo', { useNewUrlParser: true, useUnifiedTopology: true })
+const mongoURI = `mongodb://${mongoHost}:${mongoPort}/todo`;
+
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('Conectado ao MongoDB');
+    console.log('Conexão com o MongoDB estabelecida com sucesso!');
   })
   .catch((error) => {
     console.error('Erro ao conectar ao MongoDB:', error);
   });
+
 
 // Middleware para fazer o parsing do corpo da requisição como JSON
 app.use(express.json());

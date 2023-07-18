@@ -5,7 +5,7 @@ Para alimentar a sua API de demonstração e criar algumas tarefas para teste, v
 2. Envie uma requisição POST para a rota `/tasks` para criar uma nova tarefa. Por exemplo, usando o cURL, você pode executar o seguinte comando no terminal:
 
    ```bash
-   curl -X POST -H "Content-Type: application/json" -d '{"title": "Tarefa 1", "description": "Descrição da Tarefa 1", "completed": false}' http://localhost:3000/tasks
+curl -X POST -H "Content-Type: application/json" -d '{"title": "Tarefa 1", "description": "Descrição da Tarefa 1", "completed": false}' http://localhost:3000/tasks
    ```
 
    Isso enviará uma requisição POST com um corpo JSON contendo os detalhes da tarefa. A resposta da API deve retornar os detalhes da tarefa recém-criada.
