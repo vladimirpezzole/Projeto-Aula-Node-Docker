@@ -26,7 +26,7 @@
    ```
    sudo systemctl status mongod
    ```
-7. Outros comandos uteis
+7. Outros comandos úteis
    ```
    sudo systemctl status mongod
 
@@ -37,42 +37,45 @@
 
 Essas instruções são uma orientação geral e podem variar dependendo da versão específica do Linux que você está usando. Consulte a documentação oficial do MongoDB para obter mais informações e instruções detalhadas de instalação para sua distribuição Linux específica.
 
+
+*************
+
 ## Instalar Mongo via Docker
 
-### Procedure
-1. Pull the MongoDB Docker Image
+### Procedimento
+1. Baixe a imagem Docker do MongoDB
 `docker pull mongodb/mongodb-community-server`
 
-2. Run the Image as a Container
+2. Execute a imagem como um contêiner
 `docker run --name mongo -d mongodb/mongodb-community-server:latest`
 
-3. Check that the Container is Running
-To check the status of your Docker container, run the following command:
+3. Verifique se o contêiner está em execução
+Para verificar o status do seu contêiner Docker, execute o seguinte comando:
 
 `docker container ls`
 
-The output from the ls command lists the following fields that describe the running container:
+A saída do comando ls lista os seguintes campos que descrevem o contêiner em execução:
 
-- Container ID
-- Image
-- Command
-- Created
+- ID do contêiner
+- Imagem
+- Comando
+- Criado
 - Status
-- Port
-- Names
+- Porta
+- Nomes
 
 ```
 CONTAINER ID   IMAGE                                       COMMAND                  CREATED         STATUS         PORTS       NAMES
 c29db5687290   mongodb/mongodb-community-server:5.0-ubi8   "docker-entrypoint.s…"   4 seconds ago   Up 3 seconds   27017/tcp   mongo
 ```
 
-4. Connect to the MongoDB Deployment with mongosh
-Open an interactive container instance of mongo and connect to the deployment with mongosh.
+4. Conecte-se à implantação do MongoDB com o mongosh
+Abra uma instância interativa do contêiner mongo e conecte-se à implantação com o mongosh.
 
 `docker exec -it mongo mongosh`
 
-5. Validate Your Deployment
-To confirm your MongoDB instance is running, run the Hello command:
+5. Valide sua implantação
+Para confirmar se sua instância do MongoDB está em execução, execute o comando Hello:
 
 ```
 db.runCommand(
@@ -82,3 +85,46 @@ db.runCommand(
 )
 ```
 
+*********
+
+### Testar uma conexão no MongoDB
+
+Usando o comando `telnet` para testar se o MongoDB está conectado à porta padrão (27017). O `telnet` é uma ferramenta de linha de comando que permite a conexão com um servidor em uma determinada porta.
+
+Aqui está um exemplo de como usar o comando `telnet` para testar a conexão com o MongoDB na porta padrão:
+
+```
+telnet localhost 27017
+```
+
+Isso tentará estabelecer uma conexão com o MongoDB na porta 27017 no seu computador local. Se a conexão for bem-sucedida, você verá uma mensagem semelhante a:
+
+```
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+```
+
+Isso indica que o MongoDB está conectado à porta 27017 e pronto para aceitar conexões.
+
+Se a conexão não for bem-sucedida, você verá uma mensagem de erro, como:
+
+```
+Trying 127.0.0.1...
+telnet: Unable to connect to remote host: Connection refused
+```
+
+Isso significa que o MongoDB não está conectado à porta 27017 ou não está em execução.
+
+Se `localhost` não funcionar, troque para o IP do contêiner, por exemplo:
+
+```
+telnet 172.17.0.2 27017
+
+# Resultado
+Trying 172.17.0.2...
+Connected to 172.17.0.2.
+Escape character is '^]'.
+```
+
+Lembre-se de que o comando `telnet` pode não estar disponível por padrão em todos os sistemas operacionais. Em alguns casos, você pode precisar instalá-lo ou usar uma ferramenta alternativa semelhante, como `nc` (netcat), para realizar o teste de conexão.
