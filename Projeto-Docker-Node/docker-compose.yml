@@ -14,7 +14,7 @@ services:
       - mongo-docker
 
   mongo-docker:
-    image: mongo:latest
+    image: mongo:4.4.6
     container_name: "mongo-docker"
     volumes:
       - ./data:/data/db
