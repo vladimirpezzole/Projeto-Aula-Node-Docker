@@ -9,6 +9,7 @@ COPY package*.json ./
 
 # Instalar as dependências do projeto
 RUN npm install
+#RUN npm install express mongoose
 
 # Copiar o restante dos arquivos do projeto para o diretório de trabalho
 COPY . .

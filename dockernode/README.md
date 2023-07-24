@@ -140,7 +140,7 @@ Editar `package.json` atualizar a seção `scripts` para incluir o `nodemon` no 
 Montar o container com o comando:
 
 ```bash
-docker compose down
+docker compose up
 ```
 
 Acessar o endereço `localhost` ou `0.0.0.0` na porta `3000`:
