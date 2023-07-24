@@ -1,0 +1,7 @@
+Dockerfile
+README.md
+app
+docker-compose.yml
+lista
+package-lock.json
+package.json
