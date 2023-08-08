@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-  dockernode-app:
+  docker-node-app:
     build: .
-    container_name: "dockernode-app"
+    container_name: "docker-node-app"
     ports:
       - "3000:3000"
     volumes:

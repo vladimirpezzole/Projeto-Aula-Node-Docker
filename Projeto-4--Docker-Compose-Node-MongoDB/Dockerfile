@@ -17,6 +17,10 @@ COPY . .
 # Expor a porta 3000 para acesso externo
 EXPOSE 3000
 
-# Comando para iniciar a aplicação
-CMD [ "npm", "start" ]
+## Usando JSON array para executar npm install e tail -f /dev/null
 
+## Para Desenvolvimento usar:
+# CMD ["sh", "-c", "npm install && tail -f /dev/null"]
+
+## Para produção usar
+CMD ["sh", "-c", "npm install && npm start"]

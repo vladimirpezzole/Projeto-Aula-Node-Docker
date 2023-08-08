@@ -1,26 +1,54 @@
-  Esta é uma ideia simples de projeto em Node.js usando MongoDB para uma demonstração didática de uso. Vamos criar uma API básica para gerenciar uma lista de tarefas (to-do list).
+## Exercício 2. [Projeto-2-Node-MongoDB]()
+Criar, pelo modo convencional, uma **API NodeJS** tipo **"Lista de Tarefas"** com instalação do **NodeJS** usando banco de dados **MongoDB**.
+
+Para usar o **MongoDB**, primeiramente, é preciso instalar o próprio **servidor do MongoDB**:
+- Para instalação do **MongoDB** consulte o link: [**instalacao-mongo.md**](instalacao-mongo.md)
+
+Em seguida instalar ou verificar se o **NodeJS** está corretamente instalado:
+- Para instalação do **NodeJS** e do gerenciador de pacotes **npm** em sistemas **Debian, Ubuntu, Linux Mint** e derivados:
+
+```bash
+sudo apt-get install nodejs npm
+```
+
+<br>
+
+****
+
+###  Criando a API básica para gerenciar uma lista de tarefas (to-do list) com MongoDB.
 
 A base da estrutura do projeto a API estará dentro da pasta 'app' na raiz do projeto. 
 
 Para executar o Projeto siga os passos abaixo:
 
-Passo 1: Configuração do projeto
+***
+**Passo 1:** Configuração do projeto
 - Crie uma nova pasta para o projeto.
+```shell
+mkdir Projeto-2-Node-MongoDB
+```
 - Navegue até a pasta do projeto no terminal.
-- Execute `npm init` e siga as instruções para configurar um novo projeto Node.js. Isso criará um arquivo `package.json`.
+- Execute 
+```shell
+npm init
+```
+e siga as instruções para configurar um novo projeto Node.js. Isso criará um arquivo `package.json`.
 
-Passo 2: Instalação das dependências
-- Execute os seguintes comandos para instalar as dependências necessárias:
+***
+**Passo 2:** Instalação das dependências
+- Execute os seguintes comandos para instalar as dependências necessárias o **servidor web** `express` e o **banco de dados** `mongoose`:
 ```shell
 npm install express mongoose
 ```
 
-Passo 3: Criação da estrutura de pastas
-- Dentro da pasta do projeto, crie uma pasta chamada 'app'.
-- Dentro da pasta 'app', crie um arquivo chamado 'server.js'.
+***
+**Passo 3:** Criação da estrutura de pastas
+- Dentro da pasta do projeto, crie uma pasta chamada `app`.
+- Dentro da pasta `app`, crie um arquivo chamado `server.js`.
 
-Passo 4: Criação do arquivo 'server.js'
-- Abra o arquivo 'server.js' dentro da pasta 'app' e adicione o seguinte código:
+***
+**Passo 4:** Criação do arquivo `server.js`
+- Abra o arquivo `server.js` dentro da pasta `app` e adicione o seguinte código:
 
 ```javascript
 const express = require('express');
@@ -81,7 +109,8 @@ app.listen(PORT, () => {
 
 ```
 
-Passo 5: Atualização do arquivo 'package.json'
+***
+**Passo 5:** Atualização do arquivo 'package.json'
 - Abra o arquivo 'package.json' na raiz do projeto e atualize a seção 'scripts' para incluir o comando 'start':
 ```json
 "scripts": {
@@ -89,7 +118,30 @@ Passo 5: Atualização do arquivo 'package.json'
 }
 ```
 
-Passo 6: Iniciar o servidor
+***
+**Passo 6:** Iniciar o servidor
 - No terminal, execute o comando `npm start` para iniciar o servidor.
 
 Agora a API estará dentro da pasta 'app' na raiz do projeto. Você pode adicionar outras rotas e arquivos relacionados à API dentro dessa estrutura. Certifique-se de atualizar os caminhos dos arquivos e pastas, se necessário.
+
+***
+**Passo 7:** >> **Acessar a API**
+- Para acessar a API do **NodeJS** siga 
+o endereço `localhost` ou `0.0.0.0` na porta `3000` em seu navegador:
+> **http://localhost:3000/** 
+
+- Para visualizar as tarefas acesse:
+> **http://localhost:3000/tasks**
+
+***
+**Passo 8:** >> **Alimentar a API**
+- Para alimentar a **API** siga instruções do arquivo [**Como-alimentar-a-sua-API.md**](../Como-alimentar-a-sua-API.md)) na raiz geral do **Projeto-Aula-Node-Docker/**
+
+****
+**Para acessar as pastas via terminal use**
+
+```bash
+docker exec -it <ID> sh
+```
+
+<br>
