@@ -1,10 +1,14 @@
-## Exercício 2. [Projeto-2-Node-MongoDB]()
+# Exercício 2. [Projeto-2-Node-MongoDB](Projeto-2-Node-MongoDB)
 Criar, pelo modo convencional, uma **API NodeJS** tipo **"Lista de Tarefas"** com instalação do **NodeJS** usando banco de dados **MongoDB**.
 
 Para usar o **MongoDB**, primeiramente, é preciso instalar o próprio **servidor do MongoDB**:
 - Para instalação do **MongoDB** consulte o link: [**instalacao-mongo.md**](instalacao-mongo.md)
 
 Em seguida instalar ou verificar se o **NodeJS** está corretamente instalado:
+```bash
+node --version //verifica versão NodeJS
+npm --version //verifica versão Gerenciador de pacotes Npm
+```
 - Para instalação do **NodeJS** e do gerenciador de pacotes **npm** em sistemas **Debian, Ubuntu, Linux Mint** e derivados:
 
 ```bash
@@ -15,7 +19,7 @@ sudo apt-get install nodejs npm
 
 ****
 
-###  Criando a API básica para gerenciar uma lista de tarefas (to-do list) com MongoDB.
+##  Criando a API básica para gerenciar uma lista de tarefas (to-do list) com MongoDB.
 
 A base da estrutura do projeto a API estará dentro da pasta 'app' na raiz do projeto. 
 
@@ -23,16 +27,15 @@ Para executar o Projeto siga os passos abaixo:
 
 ***
 **Passo 1:** Configuração do projeto
-- Crie uma nova pasta para o projeto.
-```shell
-mkdir Projeto-2-Node-MongoDB
-```
-- Navegue até a pasta do projeto no terminal.
-- Execute 
+- Acesse a pasta do projeto `Projeto-2-Node-MongoDB` pelo terminal, ou crie caso não exista.
+
+- Execute:
 ```shell
 npm init
 ```
-e siga as instruções para configurar um novo projeto Node.js. Isso criará um arquivo `package.json`.
+Siga as instruções para configurar um novo projeto Node.js. 
+
+Isso criará arquivos e pastas necessários para o NodeJS: `package.json`, `package-lock.json` e a pasta `node_modules`.
 
 ***
 **Passo 2:** Instalação das dependências
@@ -110,12 +113,13 @@ app.listen(PORT, () => {
 ```
 
 ***
-**Passo 5:** Atualização do arquivo 'package.json'
-- Abra o arquivo 'package.json' na raiz do projeto e atualize a seção 'scripts' para incluir o comando 'start':
+**Passo 5:** Atualização do arquivo `package.json`
+- Abra o arquivo `package.json` na raiz do projeto e atualize a seção `scripts` para incluir o comando `start`:
 ```json
 "scripts": {
-  "start": "node app/server.js"
-}
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app/server.js"
+  },
 ```
 
 ***
@@ -138,10 +142,6 @@ o endereço `localhost` ou `0.0.0.0` na porta `3000` em seu navegador:
 - Para alimentar a **API** siga instruções do arquivo [**Como-alimentar-a-sua-API.md**](../Como-alimentar-a-sua-API.md)) na raiz geral do **Projeto-Aula-Node-Docker/**
 
 ****
-**Para acessar as pastas via terminal use**
 
-```bash
-docker exec -it <ID> sh
-```
 
 <br>

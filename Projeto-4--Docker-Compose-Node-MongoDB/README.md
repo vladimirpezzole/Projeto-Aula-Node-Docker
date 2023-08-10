@@ -1,30 +1,56 @@
-## Exercício 4. [Projeto-4--Docker-Compose-Node-MongoDB](Projeto-4--Docker-Compose-Node-MongoDB)
+# Exercício 4. [Projeto-4--Docker-Compose-Node-MongoDB](Projeto-4--Docker-Compose-Node-MongoDB)
 
 Criar uma **API NodeJS** tipo **"Lista de Tarefas"** com banco de dados **MongoDB**, usando **containers Docker** com **NodeJS** e **MongoDB**, orquestrados e gerenciados pelo **Docker Compose**, dispensando a necessidade de intalação dos serviços localmente.
 
-- Para Instalar o **Docker** e **Docker Compose** consulte o link: [**Como-Instalar-Docker-e-Docker-Compose.md**](Como-Instalar-Docker-e-Docker-Compose.md)
+- Verifique se já possui as instalações do `Docker` e `Docker Compose`:
 
+```bash
+docker -v
+```
+
+```bash
+docker-compose -v
+//ou
+docker compose version
+```
+
+- Verifique se o Docker foi instalado corretamente executando o comando:
+
+```bash
+sudo docker run hello-world
+```
+
+- Caso não tenha ou precise reinstalar o `Docker` e `Docker Compose` consulte o link: [**Como-Instalar-Docker-e-Docker-Compose.md**](Como-Instalar-Docker-e-Docker-Compose.md)
+*** 
 <br>
 
-**********
+****
 
-###  Criando a API básica para gerenciar uma lista de tarefas (to-do list) com MongoDB usando Docker e Docker Compose.
-A base da estrutura do projeto a API estará dentro da pasta 'app' na raiz do projeto. 
+##  >> Criando a API em um container individual apenas com Docker
 
-Para executar o Projeto siga os passos abaixo:
+- Acesse a pasta do projeto `Projeto-4--Docker-Compose-Node-MongoDB` pelo terminal, ou crie caso não exista.
+
+Siga abaixo caso queira **criar o projeto COM instalação do NodeJS**, caso queira **criar o projeto SEM instalação do NodeJS** siga para **Opção 2**
+***
+### Opção 1. Configurando projeto COM instalação do NodeJS
+> Esta opção é a mais indicada para um **projeto inicial**, mas precisa ter o **NodeJS**  e o gerenciado de pacotes **npm** instalados.
+
+> Após concluir o projeto poderá utilizar sem a necessidade do **NodeJS**  e o gerenciado de pacotes **npm** instalados.
+
+- Para instalação do **NodeJS** e do gerenciador de pacotes **npm** em sistemas **Debian, Ubuntu, Linux Mint** e derivados:
+
+```bash
+sudo apt-get install nodejs npm
+```
+
 
 ***
-**Passo 1:** Configuração do projeto
-- Crie uma nova pasta para o projeto.
+**Passo 1:** 
+- Execute o comando abaixo para inicializar o projeto e criar o arquivo `package.json` e os outros necessários.
 ```shell
-mkdir Projeto-4--Docker-Compose-Node-MongoDB
+npm init -y
 ```
-- Navegue até a pasta do projeto no terminal.
-- Execute 
-```shell
-npm init
-```
-e siga as instruções para configurar um novo projeto **NodeJS**. Isso criará um arquivo `package.json`.
+_*Para ignorar as perguntas acrescente `-y`._
 
 ***
 **Passo 2:** Instalação das dependências
@@ -33,16 +59,86 @@ e siga as instruções para configurar um novo projeto **NodeJS**. Isso criará 
 npm install express mongoose
 ```
 
+Para desenvolvimento seria muito util instalar também o `nodemon`, esta ferramenta monitora os arquivos do seu aplicativo Node.js para mudanças e reiniciar automaticamente o servidor toda vez que detecta alguma alteração no código-fonte.
+
+```bash
+npm install nodemon
+```
+
+
 ***
-**Passo 3:** Criação da estrutura de pastas
+**Passo 3:** 
+- Editar `package.json` e atualizar a seção `scripts` para incluir o comando `start`:
+
+```json
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app/index.js"
+  },
+```
+
+Para desenvolvimento utilize o `nodemon` no lugar de `node`
+
+```json
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app/index.js"
+  },
+```
+***
+***
+### Opção 2. Configurando projeto SEM instalação do NodeJS
+> Esta opção dispensa a necessidade de ter o **NodeJS**  e o gerenciado de pacotes **npm** previamente instalados.
+
+> Após finalizar e rodar o projeto certifique-se que o `Dockerfile` tenha criado corretamente na **imagem Docker** os arquivos necessários para o `NodeJS` possa rodar.
+
+***
+**Passo 1:** 
+- Na raiz do projeto crie o arquivo `package.json`
+
+```json
+{
+  "name": "projeto-docker-node",
+  "version": "1.0.0",
+  "description": "Versão do projeto, onde o Node.js e o MongoDB são executados em contêineres separados.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.3.2",
+    "nodemon": "^3.0.1"
+  }
+}
+```
+- Para desenvolvimento utilize o `nodemon` no lugar de `node`
+
+```json
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app/index.js"
+  },
+```
+
+***
+***
+## >> Criando arquivos estrutura de pastas do projeto:
+**Passo 1:** 
+- Acesse a pasta do projeto `Projeto-4--Docker-Compose-Node-MongoDB` pelo terminal.
+
+**Passo 2:**  
 - Dentro da pasta do projeto, crie uma pasta chamada `app`.
 - Dentro da pasta `app`, crie um arquivo chamado `server.js`.
 
 ***
-**Passo 4:** Criação do arquivo `server.js`
+**Passo 3:** 
 - Abra o arquivo `server.js` dentro da pasta `app` e adicione o seguinte código:
 
-```javascript
+```js
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -106,28 +202,9 @@ const mongoPort = process.env.MONGO_PORT || '27017';
 ```
 
 ***
-**Passo 5:** Atualização do arquivo 'package.json'
-- Abra o arquivo 'package.json' na raiz do projeto e atualize a seção 'scripts' para incluir o comando 'start':
-```json
-"scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app/server.js"
-  },
-```
+**Passo 4:** Criação do **Dockerfile**
 
->Certifique-se de que a estrutura do arquivo `package.json` esteja correta, com vírgulas adequadas para separar os campos.
-
->Salve as alterações no arquivo `package.json`.
-
-<br>
-
-***************************************************
-***************************************************
-## Criando arquivos necessários para os containers:
-
-***
-**Passo 1:** Criação do **Dockerfile**
-- Crie um arquivo chamado `Dockerfile` na raiz do projeto e adicione o seguinte conteúdo:
+- Na raiz do projeto crie um arquivo `Dockerfile` e adicione o seguinte código:
 
 ```Dockerfile
 # Imagem base para o Node.js
@@ -159,10 +236,23 @@ CMD ["sh", "-c", "npm install && npm start"]
 
 ```
 
-<br>
+> O comando `CMD ["sh", "-c", "npm install && npm start"]` repete o `"npm install"` para garantir que as dependências sejam instaladas e a pasta **node_modules** seja criada.
+
 
 ***
-**Passo 2:** Criação do **docker-compose.yml**
+**Passo 5:** 
+- Criar arquivo `.dockerignore` para ignorar arquivos e pastas que não deseje incluir na imagem que o  `Dockerfile` irá construir.
+
+```bash
+touch .dockerignore
+```
+- Acrescente o diretório `node_modules` no `.dockerignore`
+
+```bash
+echo node_modules >> .dockerignore
+```
+***
+**Passo 6:** Criação do **docker-compose.yml**
 - Crie um arquivo chamado `docker-compose.yml` na raiz do projeto e adicione o seguinte conteúdo:
 
 ```yaml
@@ -195,7 +285,7 @@ services:
 ```
 
 ***
-**Passo 3:** Iniciar os **containers**
+**Passo 7:** Iniciar os **containers**
 - No terminal, execute o comando 
 
 ```bash
@@ -205,8 +295,9 @@ na raiz do projeto para iniciar os **containers**.
 
 Agora, o **NodeJS** será executado no **container `node`**, enquanto o **MongoDB** será executado no **container `mongo`**. Certifique-se de ter o **Docker** e o **Docker Compose** instalados em sua máquina.
 
+
 ***
-**Passo 4:** >> **Acessar a API**
+**Passo 8:** >> **Acessar a API**
 - Para acessar a API do **NodeJS** siga 
 o endereço `localhost` ou `0.0.0.0` na porta `3000` em seu navegador:
 > **http://localhost:3000/** 
@@ -215,14 +306,17 @@ o endereço `localhost` ou `0.0.0.0` na porta `3000` em seu navegador:
 > **http://localhost:3000/tasks**
 
 ***
-**Passo 5:** >> **Alimentar a API**
+**Passo 9:** >> **Alimentar a API**
 - Para alimentar a **API** siga instruções do arquivo [**Como-alimentar-a-sua-API.md**](../Como-alimentar-a-sua-API.md)) na raiz geral do **Projeto-Aula-Node-Docker/**
 
 ****
-**Para acessar as pastas via terminal use**
+**Para acessar as pastas via terminal use:**
 
 ```bash
- docker exec -it <ID> sh
+docker exec -it <ID> sh
 ```
 
 <br>
+
+******
+********************
