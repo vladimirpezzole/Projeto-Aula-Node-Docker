@@ -25,41 +25,78 @@ git --version
 Caso precise instalar o **Git** execute:
 
 ```bash
-sudo apt install git
+sudo apt-get install git-all
 ```
 
-***
-### Comandos básicos do "Git" pra versionamento:
-Cria um nova Branch >> $   `git checkout -b 'Nome-da-Branch'`
 
-Verifica em qual branch está >> $   `git branch`
 
-Adiciona todos os arquivos >> $   `git add -A` 
-
-Adiciona um ou mais arquivos arquivos >> $   `git add 'nome-do-arquivo'`
-
-Verifica o status >> $   `git status`
-
-Faz um Commit >> $ `git commit -m 'descrição-do-Commit'`
-
-Faz o Push pro repositório >> $ `git push origin nome-da-branch`
-
-Troca de Branch  >> $ `git checkout nome-da-branch`
-
-Faz Merge da Branch na Main >> $ `git push origin nome-da-branch`
 ***
 ## Criando repositório no "GitHub"
-O repositório pode ser criado no início ou no final dos exercícios.
+Abaixo está uma lista resumida dos comandos Git para subir um projeto existente para um novo repositório no GitHub:
 
-```bash
-git --version
-```
+1. **Crie um novo repositório no GitHub**: Vá para o GitHub, faça login e crie um novo repositório vazio.
 
+2. **No seu terminal, dentro da pasta do projeto existente**:
+
+   a. `git init`: Inicializa um repositório Git local.
+
+   b. `git add .`: Adiciona todas as alterações ao índice (staging area).
+
+   c. `git commit -m "Primeiro commit"`: Confirma as alterações adicionadas com uma mensagem descritiva.
+
+   d. `git branch -M main`: Renomeia o ramo padrão para "main" (ou outro nome de sua preferência).
+
+   e. `git remote add origin <URL_do_seu_repositório_no_GitHub>`: Conecta o repositório local ao repositório remoto no GitHub.
+
+   f. `git push -u origin main`: Envia as alterações locais para o repositório remoto.
+
+3. **Atualize o repositório no GitHub**:
+
+   Após executar o comando `git push`, as alterações do seu projeto estarão no repositório remoto do GitHub.
+
+Lembre-se de substituir `<URL_do_seu_repositório_no_GitHub>` pela URL real do repositório que você criou no GitHub. Certifique-se também de que possui as credenciais corretas configuradas para autenticação.
+
+Este é um fluxo básico para subir um projeto existente para um novo repositório no GitHub. Dependendo das configurações específicas do seu projeto e das preferências de fluxo de trabalho, você pode precisar de comandos adicionais ou opções específicas.
 ***
+***
+### Comandos básicos do "Git":
+
+1. **git init**: Inicializa um novo repositório Git local.
+
+2. **git clone \<URL>**: Clona um repositório remoto para o seu sistema local.
+
+3. **git add \<arquivo(s)>**: Adiciona alterações de arquivos ao índice (staging area) para prepará-las para o commit.
+
+4. **git commit -m "\<mensagem>"**: Confirma as alterações adicionadas com uma mensagem de commit descritiva.
+
+5. **git status**: Mostra o status das alterações nos arquivos do seu repositório.
+
+6. **git log**: Exibe o histórico de commits.
+
+7. **git pull**: Puxa as alterações do repositório remoto para o ramo atual.
+
+8. **git push**: Envia os commits locais para o repositório remoto.
+
+9. **git branch**: Lista os ramos presentes no repositório.
+
+10. **git checkout \<ramo>**: Alterna para um ramo específico.
+
+11. **git merge \<ramo>**: Mescla as alterações de um ramo em outro.
+
+12. **git remote add \<nome> \<URL>**: Adiciona um repositório remoto com um nome especificado.
+
+13. **git remote -v**: Lista os repositórios remotos configurados.
+
+14. **git diff**: Mostra as diferenças entre os arquivos modificados e o estado mais recente commit.
+
+15. **git reset \<arquivo>**: Remove um arquivo do índice (staging area).
+
+****
 ---
 ****
-
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 # Exercícios:
+>> **Lembre-se de commitar sempre as principais alterações.**
 ## >> Exercício 1. [Projeto-1-Node-Sqlite](Projeto-1-Node-Sqlite)
 Criar, pelo modo convencional, uma **API NodeJS** tipo **"Lista de Tarefas"** com instalação do **NodeJS** usando banco de dados **SQLite**.
 

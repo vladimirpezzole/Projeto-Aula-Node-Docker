@@ -315,7 +315,52 @@ o endereço `localhost` ou `0.0.0.0` na porta `3000` em seu navegador:
 ```bash
 docker exec -it <ID> sh
 ```
+****
+## Comandos básicos Docker
 
+
+1. **docker pull \<imagem>**: Baixa uma imagem do Docker Hub ou de um registro especificado.
+   
+2. **docker run \<opções> \<imagem>**: Cria e executa um novo container com base na imagem fornecida.
+
+3. **docker ps**: Lista os containers em execução no momento.
+
+4. **docker ps -a**: Lista todos os containers, incluindo os que não estão em execução.
+    ```bash
+    docker ps -a
+    ```
+
+5. **docker stop \<container>**: Para um container em execução de forma ordenada.
+
+6. **docker start \<container>**: Inicia um container que foi parado.
+
+7. **docker restart \<container>**: Para e, em seguida, inicia novamente um container.
+
+8. **docker exec -it \<container> \<comando>**: Executa um comando dentro de um container em execução.
+    ```bash
+    docker exec -it <ID> sh
+    ```
+
+9. **docker rm \<container>**: Remove um container que não está em execução.
+
+10. **docker rmi \<imagem>**: Remove uma imagem local.
+
+11. **docker build -t \<nome_da_imagem> \<caminho_do_Dockerfile>**: Constrói uma nova imagem a partir de um Dockerfile.
+
+12. **docker-compose up**: Inicia serviços definidos em um arquivo `docker-compose.yml`.
+
+13. **docker-compose down**: Para e remove os serviços definidos no arquivo `docker-compose.yml`.
+
+14. **docker network ls**: Lista as redes Docker.
+
+15. **docker volume ls**: Lista os volumes Docker.
+
+Estes são apenas alguns dos comandos básicos. O Docker oferece uma ampla gama de opções para ajudar no gerenciamento de containers e imagens. 
+
+> Acesse a documentação oficial do Docker para obter informações detalhadas sobre cada comando e suas opções.
+[>> **https://docs.docker.com/**](https://docs.docker.com/)
+
+<br>
 <br>
 
 ******
